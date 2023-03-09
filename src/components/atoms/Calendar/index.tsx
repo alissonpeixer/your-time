@@ -13,7 +13,7 @@ const Calendar = ({setDaySelect}:Props) => {
   const [currentDay, setCurrentDay] = useState(today.getDate());
   const isCurrentMonth = today.getMonth() === currentMonth;
 
-  const monthNames = [              
+  const monthNames = [
     'Janeiro',
     'Fevereiro',
     'Março',
@@ -38,7 +38,7 @@ const Calendar = ({setDaySelect}:Props) => {
     if (newMonth > 11) {
       newMonth = 0;
       newYear += 1;
-      if(newYear === 2024) return 
+      if(newYear === 2024) return
     }
     setCurrentMonth(newMonth);
     setCurrentYear(newYear);
@@ -48,14 +48,16 @@ const Calendar = ({setDaySelect}:Props) => {
 
 
   const prevMonth = () => {
+    if(isCurrentMonth) return
+
     let newMonth = currentMonth - 1;
     let newYear = currentYear;
     if (newMonth < 0) {
- 
+
       newMonth = 11;
       newYear -= 1;
 
-      if(newYear === 2022) return 
+      if(newYear === 2022) return
     }
 
 
@@ -68,9 +70,9 @@ const Calendar = ({setDaySelect}:Props) => {
 
   return (
     <div >
-       
-        
-      
+
+
+
       <div className="flex justify-around text-white my-4">
 
         <button onClick={prevMonth}>
@@ -96,7 +98,7 @@ const Calendar = ({setDaySelect}:Props) => {
             <span>Sex</span>
             <span>Sab</span>
             <span>Dom</span>
-     
+
         </div>
         <div className="gap-3 text-xl">
 
@@ -108,22 +110,22 @@ const Calendar = ({setDaySelect}:Props) => {
                 if (i === 0 && j < startDay) {
 
                   return <span key={j} className='w-10 h-10 m-2'></span>;
-                  
+
                 } else if (day > monthDays[currentMonth]) {
-                
+
                   return <span key={j} className='w-10 h-10 m-2'></span>;
 
                 } else {
                   return (
-           
-                    <button key={j} 
+
+                    <button key={j}
                       disabled={day < currentDay && isCurrentMonth}
                       onClick={() => setDaySelect(day)}
                       className={`
                         transition-all
-                        w-10 h-10 flex items-center justify-center 
+                        w-10 h-10 flex items-center justify-center
                         rounded-xl ${
-                          day < currentDay && isCurrentMonth  ?  'bg-red-200/[0.7] m-2 hover:bg-red-800 cursor-no-drop' : 
+                          day < currentDay && isCurrentMonth  ?  'bg-red-200/[0.7] m-2 hover:bg-red-800 cursor-no-drop' :
                           'bg-gray-200/[0.7] m-2 hover:bg-gray-200'
                         }
                       `}
