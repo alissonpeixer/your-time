@@ -10,7 +10,7 @@ const Schedule = () => {
 
     const hors = ['10:00', '11:00', '13:00', '14:00', '15:00'] || ''
     const [daySelect, setDaySelect] = useState<number | string>()
-    const [hoursSelect, setCurrentHours] = useState<number | string>()
+    const [hoursSelect, setCurrentHours] = useState<number | any>()
     const [inputValue, setInputValue] = useState<string>('')
 
 
@@ -22,6 +22,8 @@ const Schedule = () => {
 
 
     const service = () => {
+        if (!daySelect || !hoursSelect
+        ) return
         setInputValue('')
         setCurrentHours('')
         setDaySelect('')
@@ -45,12 +47,14 @@ const Schedule = () => {
                                         key={index}
                                         className={`
                                             transition-all p-4 rounded-xl
+                                            border
                                             hover:bg-slate-900
                                             ${hours === hoursSelect ?
                                                 'bg-slate-900'
                                                 :
                                                 'bg-slate-400/[0.4]'
                                             }
+
 
                                         `}
                                         onClick={() => setCurrentHours(hours)}
