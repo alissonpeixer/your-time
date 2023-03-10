@@ -26,10 +26,16 @@ const Schedule = () => {
                                 {hors.map((hours, index) => (
                                     <button
                                         key={index}
-                                        className="
-                                            transition-all bg-slate-900/[0.4]
-                                            p-4 rounded-xl hover:bg-slate-900
-                                        "
+                                        className={`
+                                            transition-all p-4 rounded-xl
+                                            hover:bg-slate-900
+                                            ${hours === hoursSelect ?
+                                                'bg-slate-900'
+                                                :
+                                                'bg-slate-400/[0.4]'
+                                            }
+
+                                        `}
                                         onClick={() => setCurrentHours(hours)}
                                     >
                                         {hours}
