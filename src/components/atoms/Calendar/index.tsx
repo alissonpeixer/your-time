@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
 interface Props {
-  setDaySelect: (value: number) => void
+  setDaySelect: (value: number | string) => void
+  daySelect: number | any
 }
 
-const Calendar = ({setDaySelect}:Props) => {
+const Calendar = ({ setDaySelect, daySelect }: Props) => {
+
 
   const today = new Date();
 
@@ -33,12 +35,13 @@ const Calendar = ({setDaySelect}:Props) => {
 
 
   const nextMonth = () => {
+    setDaySelect('')
     let newMonth = currentMonth + 1;
     let newYear = currentYear;
     if (newMonth > 11) {
       newMonth = 0;
       newYear += 1;
-      if(newYear === 2024) return
+      if (newYear === 2024) return
     }
     setCurrentMonth(newMonth);
     setCurrentYear(newYear);
@@ -48,8 +51,8 @@ const Calendar = ({setDaySelect}:Props) => {
 
 
   const prevMonth = () => {
-    if(isCurrentMonth) return
-
+    setDaySelect('')
+    if (isCurrentMonth) return
     let newMonth = currentMonth - 1;
     let newYear = currentYear;
     if (newMonth < 0) {
@@ -57,7 +60,7 @@ const Calendar = ({setDaySelect}:Props) => {
       newMonth = 11;
       newYear -= 1;
 
-      if(newYear === 2022) return
+      if (newYear === 2022) return
     }
 
 
@@ -91,13 +94,13 @@ const Calendar = ({setDaySelect}:Props) => {
       </div>
       <div className="w-96 ">
         <div className="flex justify-around text-white">
-            <span>Seg</span>
-            <span>Ter</span>
-            <span>Qua</span>
-            <span>Qui</span>
-            <span>Sex</span>
-            <span>Sab</span>
-            <span>Dom</span>
+          <span>Seg</span>
+          <span>Ter</span>
+          <span>Qua</span>
+          <span>Qui</span>
+          <span>Sex</span>
+          <span>Sab</span>
+          <span>Dom</span>
 
         </div>
         <div className="gap-3 text-xl">
@@ -124,10 +127,9 @@ const Calendar = ({setDaySelect}:Props) => {
                       className={`
                         transition-all
                         w-10 h-10 flex items-center justify-center
-                        rounded-xl ${
-                          day < currentDay && isCurrentMonth  ?  'bg-red-200/[0.7] m-2 hover:bg-red-800 cursor-no-drop' :
+                        rounded-xl ${day < currentDay && isCurrentMonth ? 'bg-red-200/[0.7] m-2 hover:bg-red-800 cursor-no-drop' :
                           'bg-gray-200/[0.7] m-2 hover:bg-gray-200'
-                        }
+                        } ${day === daySelect && 'bg-blue-300'}
                       `}
                     >
                       {day}
