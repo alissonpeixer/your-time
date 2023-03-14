@@ -72,11 +72,11 @@ const Calendar = ({ setDaySelect, daySelect }: Props) => {
   let startDay = new Date(currentYear, currentMonth, 1).getDay();
 
   return (
-    <div >
+    <div className="p-1">
 
 
 
-      <div className="flex justify-around text-white my-4">
+      <div className="flex justify-around text-white">
 
         <button onClick={prevMonth}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

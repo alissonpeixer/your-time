@@ -11,7 +11,8 @@ export default function Home()  {
   return (
     <>
       <Container title='Your Time'>
-          <div className='flex flex-col items-center gap-6 border p-4 rounded-xl'>
+
+          <div className='flex flex-col items-center justify-center gap-6 border p-4 rounded-xl h-[70vh]'>
             <div className='text-white'>
               <h3 className='text-2xl'>Bem-Vindo ao</h3>
               <h1 className='font-bold text-4xl'>Your Time⌚</h1>
@@ -23,7 +24,7 @@ export default function Home()  {
               You Time da muito mais praticidade ao seu dia-a-dia!
             </p>
           </div>
-          <button onClick={() => router.push('/schedule')}>CALENDARIO</button>
+
       </Container>
     </>
   )

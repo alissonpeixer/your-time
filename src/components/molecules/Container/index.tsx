@@ -1,3 +1,4 @@
+import { NavBar } from '@/components/atoms/NavBar'
 import { Inter } from '@next/font/google'
 import Head from 'next/head'
 import { ReactNode } from 'react'
@@ -25,15 +26,16 @@ export const Container : React.FC<Props>  = (props : Props) => {
             min-h-screen ${inter.variable}
             font-display
             flex flex-col
-            items-center
+         
             p-4
-            justify-center
+            justify-between
             gap-2
             container
             mx-auto
             `
             }
         >
+            <NavBar />
             {props.children}
         </main>
         </>
