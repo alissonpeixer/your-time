@@ -30,7 +30,7 @@ const Schedule = () => {
     }
 
     return (
-        <Container>
+        <Container title="Calendário">
             <span>Dia selecionado {daySelect} as {hoursSelect}</span>
             <Calendar setDaySelect={setDaySelect} daySelect={daySelect} />
 

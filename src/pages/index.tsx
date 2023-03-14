@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head'
-
+import { useRouter } from "next/router"
 
 import { Container } from '@/components/molecules/Container'
-import {useRouter} from 'next/router'
+
 
 
 export default function Home()  {
@@ -16,7 +16,7 @@ export default function Home()  {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Container>
+      <Container title='Your Time'>
           <div className='flex flex-col items-center gap-6 border p-4 rounded-xl'>
             <div className='text-white'>
               <h3 className='text-2xl'>Bem-Vindo ao</h3>

@@ -1,13 +1,25 @@
 import { Inter } from '@next/font/google'
+import Head from 'next/head'
+import { ReactNode } from 'react'
+
 const inter = Inter({
     variable: "--display-font",
     subsets: ['latin']
 })
 
 
-export const Container = ({ children }: React.PropsWithChildren<{}>) => {
+interface Props {
+    children?: ReactNode,
+    title: string
+}
+
+export const Container : React.FC<Props>  = (props : Props) => {
     return (
-        <main
+        <>
+            <Head>
+                <title>{props.title}</title>
+            </Head>
+            <main
             className={
                 `
             min-h-screen ${inter.variable}
@@ -22,7 +34,8 @@ export const Container = ({ children }: React.PropsWithChildren<{}>) => {
             `
             }
         >
-            {children}
+            {props.children}
         </main>
+        </>
     )
 }
