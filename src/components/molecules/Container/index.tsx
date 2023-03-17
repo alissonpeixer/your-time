@@ -14,30 +14,31 @@ interface Props {
     title: string
 }
 
-export const Container : React.FC<Props>  = (props : Props) => {
+export const Container: React.FC<Props> = (props: Props) => {
     return (
         <>
             <Head>
                 <title>{props.title}</title>
             </Head>
             <main
-            className={
-                `
+                className={
+                    `
             min-h-screen ${inter.variable}
             font-display
             flex flex-col
-         
+
             p-4
+            items-center
             justify-between
             gap-2
             container
             mx-auto
             `
-            }
-        >
-            <NavBar />
-            {props.children}
-        </main>
+                }
+            >
+                <NavBar />
+                {props.children}
+            </main>
         </>
     )
 }

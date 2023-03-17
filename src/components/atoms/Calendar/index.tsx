@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { HiOutlineArrowCircleLeft, HiOutlineArrowCircleRight, HiXCircle } from "react-icons/hi";
 
 interface Props {
   setDaySelect: (value: number | string) => void
@@ -43,6 +44,7 @@ const Calendar = ({ setDaySelect, daySelect }: Props) => {
       newYear += 1;
       if (newYear === 2024) return
     }
+
     setCurrentMonth(newMonth);
     setCurrentYear(newYear);
 
@@ -56,10 +58,8 @@ const Calendar = ({ setDaySelect, daySelect }: Props) => {
     let newMonth = currentMonth - 1;
     let newYear = currentYear;
     if (newMonth < 0) {
-
       newMonth = 11;
       newYear -= 1;
-
       if (newYear === 2022) return
     }
 
@@ -72,27 +72,26 @@ const Calendar = ({ setDaySelect, daySelect }: Props) => {
   let startDay = new Date(currentYear, currentMonth, 1).getDay();
 
   return (
-    <div className="p-1">
+    <div className="p-1 flex flex-col items-center w-96 space-y-2">
 
-
-
-      <div className="flex justify-around text-white">
+      <div className="flex justify-between text-white w-56">
 
         <button onClick={prevMonth}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
+          {isCurrentMonth ?
+            <HiXCircle color="red" size={20} />
+            :
+            <HiOutlineArrowCircleLeft size={20} />
+          }
         </button>
 
         <span >{monthNames[currentMonth]} de {currentYear} </span>
 
         <button onClick={nextMonth}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
+          <HiOutlineArrowCircleRight size={20} />
         </button>
+
       </div>
-      <div className="w-96 ">
+      <div className="w-96">
         <div className="flex justify-around text-white">
           <span>Seg</span>
           <span>Ter</span>
@@ -101,10 +100,8 @@ const Calendar = ({ setDaySelect, daySelect }: Props) => {
           <span>Sex</span>
           <span>Sab</span>
           <span>Dom</span>
-
         </div>
-        <div className="gap-3 text-xl">
-
+        <div className="gap-3 text-xl w-full">
           {Array(6).fill(null).map((_, i) => (
             <div key={i} className='flex'>
               {Array(7).fill(null).map((_, j) => {
@@ -119,8 +116,8 @@ const Calendar = ({ setDaySelect, daySelect }: Props) => {
                   return <span key={j} className='w-10 h-10 m-2'></span>;
 
                 } else {
-                  return (
 
+                  return (
                     <button key={j}
                       disabled={day < currentDay && isCurrentMonth}
                       onClick={() => setDaySelect(day)}
@@ -139,7 +136,6 @@ const Calendar = ({ setDaySelect, daySelect }: Props) => {
               })}
             </div>
           ))}
-
         </div>
       </div>
     </div>
