@@ -12,6 +12,7 @@ const inter = Inter({
 interface Props {
     children?: ReactNode,
     title: string
+    className?: string
 }
 
 export const Container: React.FC<Props> = (props: Props) => {
@@ -33,6 +34,8 @@ export const Container: React.FC<Props> = (props: Props) => {
             gap-2
             container
             mx-auto
+
+            ${props.className}
             `
                 }
             >
