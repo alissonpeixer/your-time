@@ -93,13 +93,13 @@ const Calendar = ({ setDaySelect, daySelect }: Props) => {
       </div>
       <div className="w-96">
         <div className="flex justify-around text-white">
+          <span>Dom</span>
           <span>Seg</span>
           <span>Ter</span>
           <span>Qua</span>
           <span>Qui</span>
           <span>Sex</span>
           <span>Sab</span>
-          <span>Dom</span>
         </div>
         <div className="gap-3 text-xl w-full">
           {Array(6).fill(null).map((_, i) => (
