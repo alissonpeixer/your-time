@@ -22,7 +22,7 @@ export const NavBar = () => {
   ]
 
   return (
-    <nav className="h-20 flex items-center justify-between w-full">
+    <nav className="h-20 flex items-center justify-between w-full absolute p-10">
 
       <h1 className='font-bold text-1xl text-white xl:text-2xl'>Your Time⌚</h1>
 
@@ -30,7 +30,7 @@ export const NavBar = () => {
         {
           routers?.map((path, id) => (
             router.pathname !== path.url &&
-            <Link key={id} href={path.url} className='bg-white p-3 rounded-xl text-sm'>
+            <Link key={id} href={path.url} className='bg-cGreen-100 p-3 rounded-xl text-sm'>
               {path.title}
             </Link>
 

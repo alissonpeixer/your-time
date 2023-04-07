@@ -35,12 +35,14 @@ const Schedule = () => {
     return (
         <Container title="Calendário">
 
-            <Calendar setDaySelect={setDaySelect} daySelect={daySelect} />
+            <div className="flex justify-center">
+                <Calendar setDaySelect={setDaySelect} daySelect={daySelect} />
+            </div>
 
 
 
 
-            <div className=" flex flex-col gap-4 text-white">
+            <div className=" flex flex-col gap-4 text-white p-10">
                 {
                     daySelect && (
                         <>
