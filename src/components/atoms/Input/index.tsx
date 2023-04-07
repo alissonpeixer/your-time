@@ -9,7 +9,7 @@ interface Props {
 
 
 
-const Input = (props: Props, { ...more }: React.HTMLProps<Input>) => {
+const Input = (props: Props, { ...more }: React.HTMLProps<HTMLInputElement>) => {
     return (
         <div className="flex flex-col ">
             <label className="" htmlFor={props.name}>{props.label}</label>
