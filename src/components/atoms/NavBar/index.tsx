@@ -24,7 +24,9 @@ export const NavBar = () => {
   return (
     <nav className="h-20 flex items-center justify-between w-full absolute p-10">
 
-      <h1 className='font-bold text-1xl text-white xl:text-2xl'>Your Time⌚</h1>
+      <Link href='/'>
+        <h1 className='font-bold text-1xl text-white xl:text-2xl'>Your Time⌚</h1>
+      </Link>
 
       <ul className="flex gap-3 ">
         {

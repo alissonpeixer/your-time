@@ -21,6 +21,15 @@ module.exports = {
         cGreen: {
           '100': '#10a37f',
           '200': '#C2C8D0'
+        },
+        tGoogle:{
+          'gGreen'  : '#008342',
+          'gBlue'   : '#0054E0',
+          'gRed'    : '#CF2C1F',
+          'gYellow' : '#F7A200'
+        },
+        tFacebook:{
+          'fBlue': '#1877F2'
         }
       }
     },
