@@ -7,9 +7,15 @@ import { SessionProvider, useSession } from "next-auth/react"
 import Auth from '@/components/molecules/Auth'
 import { NavBar } from '@/components/atoms/NavBar'
 
+import type { NextComponentType } from 'next' //Import Component type
+
+//Add custom appProp type then use union to add it
+type CustomAppProps = AppProps & {
+  Component: NextComponentType & { auth?: boolean } & { role?: string } // add auth type
+}
 
 
-export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+export default function App({ Component, pageProps: { session, ...pageProps } }: CustomAppProps) {
 
 
 
