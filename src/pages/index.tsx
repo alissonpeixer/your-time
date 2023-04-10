@@ -1,14 +1,18 @@
 import React from 'react';
-import Head from 'next/head'
+
 import { useRouter } from "next/router"
 
 import { Container } from '@/components/molecules/Container'
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+
 
 
 
 export default function Home() {
   const router = useRouter()
+  const { data: session, status } = useSession() as any
+  const isUser = !!session?.user
   return (
 
     <Container title='Your Time'>
@@ -26,9 +30,10 @@ export default function Home() {
             You Time da muito mais praticidade ao seu dia-a-dia!
           </p>
           <div className='w-full flex flex-col'>
-            <Link href='' className='transition-all bg-cGreen-100 p-3 rounded-xl text-sm text-center text-white shadow-lg opacity-70 hover:opacity-100'>
-              Logar
+            <Link href={isUser ? '/schedule' : '/signin'} className='transition-all bg-cGreen-100 p-3 rounded-xl text-sm text-center text-white shadow-lg opacity-70 hover:opacity-100'>
+              {isUser ? 'Calendário' : 'Logar'}
             </Link>
+
           </div>
         </div>
       </div>

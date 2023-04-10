@@ -1,19 +1,18 @@
-import React from "react";
+import React, { InputHTMLAttributes } from "react";
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
-    value: string;
     name: string;
     className?: string;
 }
 
 
 
-const Input = (props: Props, { ...more }: React.HTMLProps<HTMLInputElement>) => {
+const Input = (props: Props) => {
     return (
         <div className="flex flex-col">
             <label className="" htmlFor={props.name}>{props.label}</label>
-            <input {...more} type="text" name={props.name} className="bg-transparent outline-none border-2 border-cGray-200 rounded-lg p-2" />
+            <input {...props} type="text" name={props.name} className="bg-transparent outline-none border-2 border-cGray-200 rounded-lg p-2" />
         </div>
     )
 }

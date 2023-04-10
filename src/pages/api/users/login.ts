@@ -1,7 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from "@/db/supabaseClient";
-
-
 
 type Data = {
   name: string
@@ -12,6 +9,6 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
 
-  console.log(req)
+    console.log(req.body)
   res.status(200).json({ name: 'John Doe' })
 }

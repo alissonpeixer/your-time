@@ -1,6 +1,7 @@
-import Link from "next/link"
-import { useState } from "react"
-import { FaGoogle, FaFacebook } from "react-icons/fa";
+import { useRouter } from "next/router"
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useEffect, useState } from "react"
+import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 
 
 import Input from "@/components/atoms/Input"
@@ -8,21 +9,42 @@ import { Container } from "@/components/molecules/Container"
 import { Button } from "@/components/atoms/Button";
 
 const Signin = () => {
-  const [value, setValue] = useState('')
+  const router = useRouter()
 
-  return (
+  const { data: session, status } = useSession()
+  const isUser = !!session?.user
+
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const email = formData.get("email");
+    const password = formData.get("password");
+    await signIn("email", {
+      email
+    }) as any;
+
+  };
+
+  useEffect(() => {
+
+    if (isUser) router.push('/schedule')
+
+    return
+  }, [status])
+
+  return !isUser && (
     <Container title="Sign In" >
 
 
       <div className="flex flex-col items-center justify-center h-[90vh]">
         <div className='transition-all bg-white   rounded-2xl p-10 flex flex-col xl:flex-row items-center justify-around w-full xl:p-10 h-full xl:w-6/12 xl:h-96'>
 
-          <form action="javascript:alert('salve')" className="flex flex-col w-full space-y-4 xl:w-5/12">
+          <form onSubmit={handleSubmit} className="flex flex-col w-full space-y-4 xl:w-5/12">
             <div className="flex flex-col space-y-3">
-              <Input name='email' label='E-mail' value={value} />
-              <Input label='Senha' name='senha' value={value} />
+              <Input label='E-mail' name='email' type="email" required />
+              {/* <Input label='Senha' name='password' type="password" required /> */}
             </div>
-            <button className='transition-all bg-cGreen-100 p-3 rounded-xl text-sm text-center text-white shadow-xl opacity-70 hover:opacity-100' type="submit">
+            <button type="submit" className='transition-all bg-cGreen-100 p-3 rounded-xl text-sm text-center text-white shadow-xl opacity-70 hover:opacity-100' >
               LOGAR
             </button>
           </form>
@@ -35,14 +57,25 @@ const Signin = () => {
 
             <Button
               text="Entrar com o Google"
+              disabled={true}
               icon={<FaGoogle color='white' />}
               onClick={() => alert('GOOGLE')}
+              customStyle="p-4 bg-red-400/70  hover:bg-red-800 cursor-no-drop"
             />
 
             <Button
               text="Entrar com o Facebook"
+              disabled={true}
               icon={<FaFacebook color='white' />}
               onClick={() => alert('FACEBOOK')}
+              customStyle="p-4  bg-blue-700/70  hover:bg-red-800  cursor-no-drop"
+            />
+
+            <Button
+              text="Entrar com o GitHub"
+              icon={<FaGithub color='white' />}
+              onClick={() => signIn()}
+              customStyle="p-4"
             />
 
 
@@ -57,3 +90,4 @@ const Signin = () => {
 
 
 export default Signin
+

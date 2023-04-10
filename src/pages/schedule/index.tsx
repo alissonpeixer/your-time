@@ -97,3 +97,8 @@ const Schedule = () => {
 }
 
 export default Schedule
+
+Schedule.auth = {
+    role: "USER",
+    unauthorized: "/",
+}

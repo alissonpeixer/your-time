@@ -3,6 +3,7 @@ import { Inter } from '@next/font/google'
 import Head from 'next/head'
 import { ReactNode } from 'react'
 import Box from '../Box'
+import { useSession } from 'next-auth/react'
 
 const inter = Inter({
     variable: "--display-font",
@@ -17,6 +18,7 @@ interface Props {
 }
 
 export const Container: React.FC<Props> = (props: Props) => {
+    const { data: session, status } = useSession()
     return (
         <>
             <Head>
@@ -30,7 +32,6 @@ export const Container: React.FC<Props> = (props: Props) => {
                     min-h-screen
                 `}
             >
-                <NavBar />
                 <Box>
                     {props.children}
                 </Box>
