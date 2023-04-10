@@ -46,6 +46,7 @@ export const authOptions = {
           text: text({ url, host }),
           html: htmlLogin({ url, host,theme }) || 'ERROR',
         })
+
         const failed = result.rejected.concat(result.pending).filter(Boolean)
         if (failed.length) {
           throw new Error(`Email(s) (${failed.join(", ")}) could not be sent`)
@@ -61,7 +62,7 @@ export const authOptions = {
 
 
   adapter: SupabaseAdapter({
-    url: process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+    url: process.env.SUPABASE_SUPABASE_URL || '',
     secret: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
   }),
 
