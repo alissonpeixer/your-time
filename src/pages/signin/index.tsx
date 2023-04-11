@@ -74,7 +74,7 @@ const Signin = () => {
             <Button
               text="Entrar com o GitHub"
               icon={<FaGithub color='white' />}
-              onClick={() => signIn()}
+              onClick={() => signIn('github')}
               customStyle="p-4"
             />
 
